@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container pt-5">
+        <table class="table">
+            <thead class="thead-light">
+                <td scope="col">
+                    <strong>Language</strong>
+                </td>
+                <td scope="col">
+                    <strong>Abbreviation</strong>
+                </td>
+                <td scope="col">
+                    <strong>Delete</strong>
+                </td>
+            </thead>
+            {% for x in results %}
+            <tr>
+                <td scope="row">{{x[0]}}</td>
+                <td scope="row">{{x[1]}}</td>
+                <td scope="row">
+                    <form action="{{ url_for('delete') }}" method='post'>
+                        <input type="hidden" value="{{ x[0] }}" name="lang_to_delete" />
+                        <input type="hidden" value="{{ x[1] }}" name="abbr_to_delete" />
+                        <input type="submit" value="X" class="btn btn-danger">
+                    </form>
+            </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <a type="submit" href="/" class="btn btn-primary">BACK</a>
+    </div>
+    </body>
+</html>

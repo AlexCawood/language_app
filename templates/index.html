@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style="background-color: lightgray;">
+        
+        <div class="container pb-5">
+            <div class="row pt-5"><img src="http://gluedata.com/wp-content/uploads/2019/05/GD-Logo-new-800x291-white.png" /></div>
+            <div class="row pt-5">
+                <div class="col-4"></div>
+                <div class="col-4">
+                <form action="{{ url_for('index') }}" method='post'> 
+                    <div class="form-group">
+                        <label for="lang">Language:</label>
+                        <input type='text' id='lang' name="lang" class="form-control"></input>
+                    </div>
+                    <div class="form-group">
+                        <label for="abbr">Abbreviation:</label>
+                        <select name="abbr" id="abbr" class="browser-default custom-select">
+                            <option selected>Select a language code</option>
+                            {% for code in lang_code %}
+                            <option value="{{code[1]}}">{{code[1]}}</option>
+                            {% endfor %}
+                        </select>
+                        <a type="submit" href="/add_abbr" class="btn btn-primary">Add Code</a>
+                    </div>
+                    <input type='submit' class="btn btn-primary" ></input>
+                </form>
+            </div>
+            <div class='col-4'></div>
+        </div>
+        <table class="table">
+            <thead class="thead-light">
+                <td scope="col">
+                    <strong>Language</strong>
+                </td>
+                <td scope="col">
+                    <strong>Abbreviation</strong>
+                </td>
+            </thead>
+            {% for x in results %}
+            <tr>
+                <td scope="row">{{x[0]}}</td>
+                <td scope="row">{{x[1]}}</td>
+                
+            </tr>
+            {% endfor %}
+        </table>
+        <a type="submit" href="/delete" class="btn btn-danger">Delete</a>
+    </div>
+    </body>
+</html>
