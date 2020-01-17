@@ -18,12 +18,12 @@
             </thead>
             {% for x in results %}
             <tr>
-                <td scope="row">{{x[0]}}</td>
-                <td scope="row">{{x[1]}}</td>
+                <td scope="row">{{x.language}}</td>
+                <td scope="row">{{x.code}}</td>
                 <td scope="row">
                     <form action="{{ url_for('delete') }}" method='post'>
-                        <input type="hidden" value="{{ x[0] }}" name="lang_to_delete" />
-                        <input type="hidden" value="{{ x[1] }}" name="abbr_to_delete" />
+                        <input type="hidden" value="{{ x.language }}" name="lang_to_delete" />
+                        <input type="hidden" value="{{ x.code }}" name="abbr_to_delete" />
                         <input type="submit" value="X" class="btn btn-danger">
                     </form>
             </td>

@@ -31,16 +31,3 @@ class Database():
     
     def executeQuery(self, query, values=""):
         self.connection.execute(f"""{query}""",values)
-    
-
-    
-
-class Lang():
-    def __init__(self,lang, abbr):
-        self.lang = lang
-        self.abbr = abbr
-
-class Language_code():
-    def __init__(self,id, code):
-        self.id = id
-        self.code = code
